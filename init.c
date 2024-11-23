@@ -3,15 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/23 21:28:39 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/23 23:03:17 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "header.h"
+
+static t_missile	*init_missiles(void)
+{
+	t_missile *new_missiles_list;
+	int	i;
+	//!:! CHANGE THE MALLOC 500 UP TO THE MAX OF WIDTH * HEIGHT
+	new_missiles_list = malloc(500 * sizeof(t_missile));
+	if (!new_missiles_list)
+		return (NULL);
+	i = 0;
+	while (i < 500)
+	{
+		new_missiles_list[i].alive =  FALSE;
+		new_missiles_list[i].x = 0;
+		new_missiles_list[i].y = 0;
+		i++; 
+	}
+	return (new_missiles_list);
+}
 
 static t_player	*init_player(void)
 {
@@ -23,6 +42,7 @@ static t_player	*init_player(void)
 	new_player->life = 3;
 	new_player->x = GAME_WIDTH / 2;
 	new_player->y = GAME_HEIGHT - 3;
+	new_player->missiles = init_missiles();
 	return (new_player);
 }
 
@@ -61,6 +81,7 @@ static t_asteroid	*init_asteroids(void)
 	}
 	return (new_asteroid_list);
 }
+
 
 t_game	*init_game(void)
 {

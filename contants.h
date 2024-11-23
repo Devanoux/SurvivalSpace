@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contants.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/23 21:17:58 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/23 22:27:26 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define ASTEROID 1
 # define PLAYER 2
 # define ENNEMY 3
+# define PLAYER_BULLET 4
+# define ENNEMY_BULLET 5
 
 // GAME STATES
 

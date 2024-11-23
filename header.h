@@ -20,11 +20,20 @@ typedef struct	s_asteroid
 	int 	y;
 }	t_asteroid;
 
+typedef struct	s_missile
+{
+	bool	alive;
+	int		cooldown;
+	int		x;
+	int		y;
+}	t_missile;
+
 typedef struct	s_player
 {
-	int	x;
-	int	y;
-	int life;
+	int			x;
+	int			y;
+	int			life;
+	t_missile	*missiles;
 }	t_player;
 
 typedef	int** t_map;
@@ -46,6 +55,7 @@ void	init_scr(void);
 
 //player.c
 void	check_collision(t_asteroid *asteroid_list, t_player *player);
+int	player_mouvement(t_game *game, int input);
 
 //asteroid.c
 void	spawn_asteroid(t_map map, t_asteroid *asteroid_list);

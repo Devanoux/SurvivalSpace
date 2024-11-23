@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/23 21:25:14 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 00:04:05 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	display_map(t_map map)
 				printw("#");
 			else if (map[j][i] == 2)
 				printw("A");
+			else if (map[j][i] == 3)
+				printw("T");
+			else if (map[j][i] == 4)
+				printw("'");
+			else if (map[j][i] == 5)
+				printw("*");
 			i++;
 		}
 		i = 0;
@@ -68,6 +74,13 @@ void	update_map(t_game *game)
 		{
 			game->map[game->asteroid_list[i].y][game->asteroid_list[i].x] = ASTEROID;
 		}
+		i++;
+	}
+	i = 0;
+	while (i < 500)
+	{
+		if (game->player->missiles[i].alive == TRUE)
+			game->map[game->player->missiles[i].y][game->player->missiles[i].x] = PLAYER_BULLET;
 		i++;
 	}
 	game->map[game->player->y][game->player->x] = PLAYER;
