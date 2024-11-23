@@ -7,44 +7,58 @@
 # include <stdlib.h>
 # include <limits.h>
 
+# include "contants.h"
+
+extern int	GAME_WIDTH;
+extern int	GAME_HEIGHT;
+
 typedef struct	s_asteroid
 {
-	int x;
-	int y;
+	bool	alive;
+	int		cooldown;
+	int 	x;
+	int 	y;
 }	t_asteroid;
 
-typedef struct s_player
+typedef struct	s_player
 {
 	int	x;
 	int	y;
 	int life;
 }	t_player;
 
+typedef	int** t_map;
+
+typedef struct	s_game
+{
+	int			state;
+	t_map		map;
+	t_asteroid	*asteroid_list;
+	t_player	*player;
+}	t_game;
+
 //game.c
-void	game_over();
+void	update_game(t_game *game);
+
+//init.c
+t_game	*init_game(void);
+void	init_scr(void);
 
 //player.c
-void	spawn_player(int **map, t_player *player);
-void	check_collision(t_asteroid *list_asteroid, t_player *player);
+void	check_collision(t_asteroid *asteroid_list, t_player *player);
 
 //asteroid.c
-void	spawn_asteroid(int **map, t_asteroid *list_asteroid);
-void	move_asteroid(t_asteroid *list_asteroid);
+void	spawn_asteroid(t_map map, t_asteroid *asteroid_list);
+void	move_asteroid(t_asteroid *asteroid_list);
 
 //utils.c
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 
 //map.c
+void	update_map(t_game *game);
+void	display_map(t_map map);
 
-	// NULL = 0
-	// ASTEROID = 1
-	// PLAYER = 2
-	// ENNEMY = 3
-
-void	display_map(int **map);
-void	destroy_entities(t_asteroid *asteroid, int i);
-void	update_map(int **map, t_asteroid *list_asteroid, t_player *player);
 
 
 

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/23 17:24:38 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/23 21:25:14 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-
-void	display_map(int **map)
+void	display_map(t_map map)
 {
 	int	i;
 	int	j;
@@ -21,9 +20,9 @@ void	display_map(int **map)
 	i = 0;
 	j = 0;
 	clear();
-	while(j < LINES)
+	while(j < GAME_HEIGHT)
 	{
-		while (i < COLS)
+		while (i < GAME_WIDTH)
 		{
 			if (map[j][i] == 0)
 				printw(" ");
@@ -39,41 +38,39 @@ void	display_map(int **map)
 	refresh();
 }
 
-
-void	destroy_entities(t_asteroid *asteroid, int i)
+void	clean_map(t_map map)
 {
-	asteroid[i].x = 0;
-	asteroid[i].y = rand()%COLS;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < GAME_HEIGHT)
+	{
+		j = 0;
+		while (j < GAME_WIDTH)
+		{
+			map[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	update_map(t_game *game)
+{
+	int i;
+
+	clean_map(game->map);
+	i = 0;
+	while (i < MAX_ASTEROIDS)
+	{
+		if (game->asteroid_list[i].alive)
+		{
+			game->map[game->asteroid_list[i].y][game->asteroid_list[i].x] = ASTEROID;
+		}
+		i++;
+	}
+	game->map[game->player->y][game->player->x] = PLAYER;
 }
 
 // YOU CAN ADD MORE PARAMETER AFTER LIKES T_MISSILES/ T_ENNEMY AND add others parameters that you don't use to null and you parameters use well set
-
-void	update_map(int **map, t_asteroid *list_asteroid, t_player *player)
-{
-	size_t	i;
-
-	i = 0;
-	
-
-	// ASTEROID PART
-	while (i < 42)
-	{
- 		map[list_asteroid[i].x][list_asteroid[i].y] = 0;
-		i++;
-	}
-	move_asteroid(list_asteroid);
-	i = 0;
-	while (i < 42)
-	{
-		map[list_asteroid[i].x][list_asteroid[i].y] = 1;
-		i++;
-	}
-	
-	check_collision(list_asteroid, player);
-
-	
-
-	// PLAYER PART
-}
-
-

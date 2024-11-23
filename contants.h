@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   contants.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 19:52:51 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/23 21:09:26 by ebini            ###   ########lyon.fr   */
+/*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
+/*   Updated: 2024/11/23 21:17:58 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#ifndef CONSTANTS_H
+# define CONSTANTS_H
 
-void	update_game(t_game *game)
-{
-	t_asteroid	*asteroid_list;
-	t_map		map;
-	size_t	i;
+// MAX VALUES
 
+# define MAX_ASTEROIDS 42
 
-	asteroid_list = game->asteroid_list;
-	map = game->map;
-	i = 0;
-	// ASTEROID PART
-	move_asteroid(asteroid_list);
-	i = 0;
-	
-	// PLAYER PART
-	check_collision(asteroid_list, game->player);
-	update_map(game);
-}
+// SPEED VALUES
+
+#define	ASTEROID_SPEED 5
+
+// MAP VALUES
+
+# define VOID 0
+# define ASTEROID 1
+# define PLAYER 2
+# define ENNEMY 3
+
+// GAME STATES
+
+# define ERROR -1
+# define END 0
+# define MENU 1
+# define PLAY 2
+# define GAME_OVER 3
+
+#endif
