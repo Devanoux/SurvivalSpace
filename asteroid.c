@@ -6,41 +6,51 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:10:46 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/23 20:58:58 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/23 23:14:41 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	summon_asteroid(t_map map, t_asteroid *asteroid_list)
+void	summon_asteroid(t_asteroid *asteroid)
 {
-	size_t	nb_asteroid;
-	size_t	random_x;
-	size_t	random_y;
-
-	nb_asteroid = 0;
-	while (nb_asteroid < MAX_ASTEROIDS)
+	if ((rand() % 100) < ASTEROID_SPAWN_RATE)
 	{
-		random_y = rand()%GAME_WIDTH;
-		random_x = rand()%GAME_HEIGHT;
-		asteroid_list[nb_asteroid].x = random_x;
-		asteroid_list[nb_asteroid].y = random_y;
-		map[random_x][random_y] = 1;
-		nb_asteroid++;
+		asteroid->x = rand() % GAME_WIDTH;
+		asteroid->y = 0;
+		asteroid->alive = TRUE;
 	}
 }
 
-void	move_asteroid(t_asteroid *asteroid_list)
+void	move_asteroid(t_asteroid *asteroid)
 {
-	size_t i;
+	if (!asteroid->cooldown)
+	{
+		if (asteroid->y < GAME_HEIGHT - 1)
+		{
+			asteroid->y++;
+			asteroid->cooldown = ASTEROID_SPEED;
+		}
+		else
+			asteroid->alive = FALSE;
+	}
+	else
+		asteroid->cooldown--;
+}
+
+void	update_asteroids(t_asteroid *asteroid_list)
+{
+	size_t	i;
+	// int		dead_asteroids;
 
 	i = 0;
 	while (i < MAX_ASTEROIDS)
 	{
-		if (asteroid_list[i].x < GAME_HEIGHT - 1)
-			asteroid_list[i].x++;
+		if (asteroid_list[i].alive)
+			move_asteroid(&asteroid_list[i]);
 		else
-			asteroid_list[i].alive = FALSE;
+			summon_asteroid(&asteroid_list[i]);
+			// dead_asteroids++;
 		i++;
 	}
 }

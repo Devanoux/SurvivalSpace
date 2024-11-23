@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:52:51 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/23 21:09:26 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/23 22:12:57 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	update_game(t_game *game)
 	map = game->map;
 	i = 0;
 	// ASTEROID PART
-	move_asteroid(asteroid_list);
+	update_asteroids(asteroid_list);
 	i = 0;
 	
 	// PLAYER PART

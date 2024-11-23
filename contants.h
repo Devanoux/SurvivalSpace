@@ -6,12 +6,16 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/23 21:17:58 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 00:03:51 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
+
+// DIFFICULTY CONFIG
+
+# define ASTEROID_SPAWN_RATE 1 // in %
 
 // MAX VALUES
 
@@ -19,7 +23,7 @@
 
 // SPEED VALUES
 
-#define	ASTEROID_SPEED 5
+#define	ASTEROID_SPEED 10
 
 // MAP VALUES
 

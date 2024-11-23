@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/23 21:28:39 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/23 23:19:35 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_game	*init_game(void)
 {
 	t_game	*new_game;
 
-
 	new_game = malloc(sizeof(t_game));
 	if (!new_game)
 		return (NULL);
@@ -88,5 +87,6 @@ void	init_scr()
 	noecho();
 	cbreak();
 	curs_set(0);
+	start_color();
 	keypad(stdscr, TRUE);
 }

@@ -22,7 +22,7 @@ CFLAGS = -Wall -Wextra -Werror -MD -MP
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	cc -lncurses $(OBJS) -o $(NAME) 
+	cc -lncursesw $(OBJS) -o $(NAME) 
 
 $(BUILD_FOLDER)/%.o: %.c
 	@mkdir -p $(BUILD_FOLDER)

@@ -49,7 +49,7 @@ void	check_collision(t_asteroid *asteroid_list, t_player *player);
 
 //asteroid.c
 void	spawn_asteroid(t_map map, t_asteroid *asteroid_list);
-void	move_asteroid(t_asteroid *asteroid_list);
+void	update_asteroids(t_asteroid *asteroid_list);
 
 //utils.c
 void	*ft_memset(void *s, int c, size_t n);
