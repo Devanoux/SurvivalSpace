@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:15:49 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 18:16:16 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:39:53 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	run_game(t_game *game)
 	struct timespec start;
 	int input;
 	int exit;
+	int frames;
 
+	frames = 0;
 	while (game->state > 0)
 	{
 	    clock_gettime(CLOCK_MONOTONIC, &start);
@@ -35,9 +37,13 @@ int	run_game(t_game *game)
 		}
 		if (game->state == GAME_OVER)
 		{
-			game->state = 0;
+			if (input == ' ')
+				game->state = PLAY;
+			display_game_over(game, frames);
 		}
 		wait_for_frame(&start, 1000 / FPS);
+		frames++;
+		frames %= 100000;
 	}
 	return (0);
 }

@@ -5,6 +5,7 @@
 		"unistd.h": "c",
 		"header.h": "c",
 		"time.h": "c",
-		"constants.h": "c"
+		"constants.h": "c",
+		"string.h": "c"
 	}
 }
