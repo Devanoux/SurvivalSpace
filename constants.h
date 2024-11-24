@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 22:39:07 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:09:00 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@
 # define GAME_OVER_IMAGE_HEIGHT 21
 
 // DIFFICULTY CONFIG
-# define PLAYER_COOLDOWN 5
-# define ENEMY_COOLDOWN 100
+# define PLAYER_COOLDOWN 15
+# define ENEMY_COOLDOWN 150
 # define FPS 60
-# define ASTEROID_SPAWN_RATE 1 // divided by 1000
-# define ENEMY_SPAWN_RATE 1 // same
+# define ASTEROID_SPAWN_RATE 30 // divided by 10000
+# define ENEMY_SPAWN_RATE 30 // same
 
 #endif

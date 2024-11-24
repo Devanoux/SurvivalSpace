@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asteroid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:10:46 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 15:52:24 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:07:24 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	summon_asteroid(t_asteroid *asteroid)
 {
-	if ((rand() % 1000) < ASTEROID_SPAWN_RATE)
+	if ((rand() % 100000) < ASTEROID_SPAWN_RATE)
 	{
 		asteroid->x = rand() % MAP_WIDTH;
 		asteroid->y = 0;
