@@ -13,7 +13,7 @@ OBJS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.o))
 DEPS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.d))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -MD -MP
+CFLAGS = -Wall -Wextra -Werror -MD -MP -g
 
 -include $(DEPS)
 

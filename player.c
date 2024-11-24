@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 00:03:38 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 00:54:41 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,111 +42,55 @@ void	piou_piou(t_game *game)
 			game->player->missiles[i].alive = TRUE;
 			game->player->missiles[i].x = game->player->x;
 			game->player->missiles[i].y = (game->player->y) - 1;
-			break;
+			break ;
 		}
-			i++;
+		i++;
 	}
 }
 
 int	player_mouvement(t_game *game, int input)
 {
-
-	//adding WSAD
-	if (input == KEY_UP)
-		game->player->y -= game->player->y < GAME_HEIGHT - 1;
-	else if (input == KEY_DOWN)
-		game->player->y += game->player->y > 0;
-	else if (input == KEY_LEFT)
+	switch (input)
+	{
+	case KEY_UP:
+		game->player->y -= game->player->y > 0;
+		break ;
+	case KEY_DOWN:
+		game->player->y += game->player->y < GAME_HEIGHT - 1;
+		break ;
+	case KEY_LEFT:
 		game->player->x -= game->player->x > 0;
-	else if (input == KEY_RIGHT)
+		break ;
+	case KEY_RIGHT:
 		game->player->x += game->player->x < GAME_WIDTH - 1;
-	if (input == 'w')
-		game->player->y -= game->player->y < GAME_HEIGHT - 1;
-	else if (input == 's')
-		game->player->y += game->player->y > 0;
-	else if (input == 'a')
+		break ;
+	case 'w':
+		game->player->y -= game->player->y > 0;
+		break ;
+	case 's':
+		game->player->y += game->player->y < GAME_HEIGHT - 1;
+		break ;
+	case 'a':
 		game->player->x -= game->player->x > 0;
-	else if (input == 'd')
+		break ;
+	case 'd':
 		game->player->x += game->player->x < GAME_WIDTH - 1;
-	else if (input == 'o')
+		break ;
+	case 'o':
 		piou_piou(game);
-	else if (input == KEY_BACKSPACE)
+		break ;
+	case KEY_BACKSPACE:
 		return (-1);
-	return (0);	
-} 
-
-
-//void	move_player_bullet(t_game *game)
+		break ;
+	default:
+		break;
+	}
+	return (0);
+}
+// void	move_player_bullet(t_game *game)
 //{
-	
+
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // void run_game(int scr_width, int scr_height)
 // {
@@ -174,12 +118,6 @@ int	player_mouvement(t_game *game, int input)
 // 			running = FALSE;
 // 			break ;
 // 		case 'w':
-
-
-
-
-
-
 
 // 			posY -= posY > 0;
 // 			break ;

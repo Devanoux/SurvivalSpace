@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 00:08:23 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 01:21:38 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	display_map(t_map map)
 {
 	int	i;
 	int	j;
-	
-	i = 0;
+
 	j = 0;
 	clear();
 	while(j < GAME_HEIGHT)
 	{
+		i = 0;
 		while (i < GAME_WIDTH)
 		{
 			if (map[j][i] == 0)
@@ -38,7 +38,6 @@ void	display_map(t_map map)
 				printw("*");
 			i++;
 		}
-		i = 0;
 		j++;
 	}
 	refresh();

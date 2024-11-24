@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 00:07:56 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 00:10:19 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 // SPEED VALUES
 
-#define	ASTEROID_SPEED 10
+#define	ASTEROID_SPEED 20
 
 // MAP VALUES
 

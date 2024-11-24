@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 00:08:19 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 01:24:38 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,6 @@ void	init_scr()
 	curs_set(0);
 	start_color();
 	keypad(stdscr, TRUE);
+	scrollok(stdscr, FALSE);
+	idlok(stdscr, FALSE);
 }
