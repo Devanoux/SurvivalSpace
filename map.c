@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 14:58:56 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 16:07:46 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,3 @@ void	update_map(t_game *game)
 	}
 	game->map[game->player->y][game->player->x] = PLAYER;
 }
-
-// YOU CAN ADD MORE PARAMETER AFTER LIKES T_MISSILES/ T_ENNEMY AND add others parameters that you don't use to null and you parameters use well set

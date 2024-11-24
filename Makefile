@@ -12,7 +12,7 @@ FILES =	main.c \
 		screen.c \
 		free.c \
 		init.c \
-		enemy.c 
+		enemy.c \
 
 OBJS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.o))
 DEPS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.d))
@@ -20,9 +20,9 @@ DEPS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.d))
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -MD -MP -g
 
--include $(DEPS)
+MAKEFLAGS += --no-print-directory
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re
 
 all:	$(NAME)
 
@@ -41,3 +41,5 @@ fclean: clean
 
 re: fclean 
 	$(MAKE) all
+
+-include $(DEPS)
