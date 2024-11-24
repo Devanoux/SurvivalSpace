@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:10:46 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/23 23:14:41 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 08:51:03 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	summon_asteroid(t_asteroid *asteroid)
 {
 	if ((rand() % 100) < ASTEROID_SPAWN_RATE)
 	{
-		asteroid->x = rand() % GAME_WIDTH;
+		asteroid->x = rand() % MAP_WIDTH;
 		asteroid->y = 0;
 		asteroid->alive = TRUE;
 	}
@@ -26,7 +26,7 @@ void	move_asteroid(t_asteroid *asteroid)
 {
 	if (!asteroid->cooldown)
 	{
-		if (asteroid->y < GAME_HEIGHT - 1)
+		if (asteroid->y < MAP_HEIGHT - 1)
 		{
 			asteroid->y++;
 			asteroid->cooldown = ASTEROID_SPEED;
@@ -50,7 +50,6 @@ void	update_asteroids(t_asteroid *asteroid_list)
 			move_asteroid(&asteroid_list[i]);
 		else
 			summon_asteroid(&asteroid_list[i]);
-			// dead_asteroids++;
 		i++;
 	}
 }

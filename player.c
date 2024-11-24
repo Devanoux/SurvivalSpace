@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 01:55:01 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 08:54:55 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	check_collision(t_game *game)
 		{
 			game->asteroid_list[i].alive = FALSE;
 			game->player->life--;
+			game->user->score -= 1000;
 		}
 		i++;
 	}
@@ -33,82 +34,84 @@ void	check_collision(t_game *game)
 void	check_life(t_game *game)
 {
 	if (game->player->life == 0)
-	{
 		game->state = GAME_OVER;
-	}
 }
 
-void	piou_piou(t_game *game)
+void	piou_piou(t_player *player)
 {
 	int	i;
 
 	i = 0;
-	while (i < 500)
+	if (!player->cooldown)
 	{
-		if (game->player->missiles[i].alive == FALSE)
+		while (i < 500)
 		{
-			game->player->missiles[i].alive = TRUE;
-			game->player->missiles[i].x = game->player->x;
-			game->player->missiles[i].y = (game->player->y) - 1;
-			break ;
+			if (player->missiles[i].alive == FALSE)
+			{
+				player->missiles[i].alive = TRUE;
+				player->missiles[i].x = player->x;
+				player->missiles[i].y = player->y - 1;
+				break ;
+			}
+				i++;
 		}
-			i++;
+		player->cooldown = PLAYER_COOLDOWN;
 	}
 }
 
-void	move_missile(t_game *game)
+void	move_missile(t_missile *missiles)
 {
 	int i;
 
 	i = 0;
 	while(i < 500)
 	{
-		if (!game->player->missiles[i].cooldown)
+		if (!missiles[i].cooldown)
 		{
-			if (game->player->missiles[i].y > 0)
+			if (missiles[i].y > 0)
 			{
-				game->player->missiles[i].y--;
-				game->player->missiles[i].cooldown = ASTEROID_SPEED;
+				missiles[i].y--;
+				missiles[i].cooldown = MISSILE_SPEED;
 			}
 			else
-				game->player->missiles[i].alive = FALSE;
+				missiles[i].alive = FALSE;
 		}
 		else
-			game->player->missiles[i].cooldown--;
+			missiles[i].cooldown--;
 		i++;
 	}
 }
 
-int	player_mouvement(t_game *game, int input)
+int	move_player(t_player *player, int input)
 {
 	switch (input)
 	{
 	case KEY_UP:
-		game->player->y -= game->player->y > 0;
+		player->y -= player->y > 0;
 		break ;
 	case KEY_DOWN:
-		game->player->y += game->player->y < GAME_HEIGHT - 1;
+		player->y += player->y < MAP_HEIGHT - 1;
 		break ;
 	case KEY_LEFT:
-		game->player->x -= game->player->x > 0;
+		player->x -= player->x > 0;
 		break ;
 	case KEY_RIGHT:
-		game->player->x += game->player->x < GAME_WIDTH - 1;
+		player->x += player->x < MAP_WIDTH - 1;
 		break ;
 	case 'w':
-		game->player->y -= game->player->y > 0;
+		player->y -= player->y > 0;
 		break ;
 	case 's':
-		game->player->y += game->player->y < GAME_HEIGHT - 1;
+		player->y += player->y < MAP_HEIGHT - 1;
 		break ;
 	case 'a':
-		game->player->x -= game->player->x > 0;
+		player->x -= player->x > 0;
 		break ;
 	case 'd':
-		game->player->x += game->player->x < GAME_WIDTH - 1;
+		player->x += player->x < MAP_HEIGHT - 1;
 		break ;
-	case 'o':
-		piou_piou(game);
+	case ' ':
+		piou_piou(player);
 		break ;
 	case KEY_BACKSPACE:
 		return (-1);
@@ -118,74 +121,10 @@ int	player_mouvement(t_game *game, int input)
 	}
 	return (0);
 }
-// void	move_player_bullet(t_game *game)
-//{
 
-//}
-
-// void run_game(int scr_width, int scr_height)
-// {
-// 	char tab[scr_height][scr_width];
-// 	int	running;
-// 	int input;
-// 	int is_space;
-// 	int posX;
-// 	int posY;
-
-// 	running = TRUE;
-// 	posX = scr_width / 2;
-// 	posY = scr_height / 2;
-// 	is_space = 0;
-// 	while (running)
-// 	{
-// 		input = getch();
-// 		if (input == ' ')
-// 			is_space = TRUE;
-// 		else
-// 			is_space = FALSE;
-// 		switch (input)
-// 		{
-// 		case 27:
-// 			running = FALSE;
-// 			break ;
-// 		case 'w':
-
-// 			posY -= posY > 0;
-// 			break ;
-// 		case 's':
-// 			posY += posY < GAME_HEIGHT - 1;
-// 			break ;
-// 		case 'a':
-// 			posX -= posX > 0;
-// 			break ;
-// 		case 'd':
-// 			posX += posX < GAME_WIDTH - 1;
-// 			break ;
-// 		default:
-// 			break ;
-// 		}
-// 		clear();
-// 		printw(",d88b.d88b,\n");
-// 		printw("88888888888\n");
-// 		printw("`Y8888888Y'\n");
-// 		printw("  `Y888Y'  \n");
-// 		printw("    `Y'    \n");
-// 		printw(",d88b.d88b,\n");
-// 		printw("88888888888\n");
-// 		printw("`Y8888888Y'\n");
-// 		printw("  `Y888Y'  \n");
-// 		printw("    `Y'    \n");
-// 		move(posY, posX);
-// 		printw("A");
-// 		refresh();
-// 		wait_for_frame();
-// 	}
-// }
-
-// int	main(void)
-// {
-// 	initscr();
-// 	run_game(GAME_WIDTH, GAME_HEIGHT);
-// 	endwin();
-// 	return (0);
-// }
+int	update_player(t_player *player, int input)
+{
+	if (player->cooldown)
+		player->cooldown--;
+	return (move_player(player, input));
+}

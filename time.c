@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 16:11:37 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 03:24:27 by ebini            ###   ########lyon.fr   */
+/*   Created: 2024/11/24 02:00:12 by ebini             #+#    #+#             */
+/*   Updated: 2024/11/24 02:07:36 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
 #include "header.h"
 
-void	for_each(void *array, size_t n, size_t (*f)(void *))
+void	wait_for_frame(void)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		array += f(array);
-		i++;
-	}
-}
-
-int	min(int a, int b)
-{
-	return (a <= b ? a : b);
-}
-
-int	max(int a, int b)
-{
-	return (a >= b ? a : b);
+	struct timespec req, rem;
+	req.tv_sec = 0;
+	req.tv_nsec =  1000000000 / FPS;
+	nanosleep(&req, &rem);
 }

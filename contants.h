@@ -6,16 +6,12 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 00:10:19 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 09:12:08 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONSTANTS_H
 # define CONSTANTS_H
-
-// DIFFICULTY CONFIG
-
-# define ASTEROID_SPAWN_RATE 1 // in %
 
 // MAX VALUES
 
@@ -24,15 +20,19 @@
 // SPEED VALUES
 
 #define	ASTEROID_SPEED 20
+#define	MISSILE_SPEED 10
 
 // MAP VALUES
 
-# define VOID 0
-# define ASTEROID 1
-# define PLAYER 2
-# define ENNEMY 3
-# define PLAYER_BULLET 4
-# define ENNEMY_BULLET 5
+# define MAP_WIDTH 60
+# define MAP_HEIGHT 40
+
+# define VOID ' '
+# define ASTEROID '#'
+# define PLAYER 'A'
+# define ENEMY 'T'
+# define PLAYER_MISSILE '\''
+# define ENEMY_MISSILE '*'
 
 // GAME STATES
 
@@ -41,5 +41,24 @@
 # define MENU 1
 # define PLAY 2
 # define GAME_OVER 3
+
+// STATS CONFIGS
+
+# define STAT_WIDTH 20
+# define STAT_HEIGHT 3
+# define STAT_MARGIN 3
+# define STAT_PADDING 1
+
+// HEALTH CONFIGS
+
+# define HEALTH_WIDTH 11
+# define HEALTH_MARGIN 3
+# define HEALTH_PADDING 1
+# define HEART_HEIGHT 7
+
+// DIFFICULTY CONFIG
+# define PLAYER_COOLDOWN 15
+# define FPS 60;
+# define ASTEROID_SPAWN_RATE 1 // / 1000
 
 #endif

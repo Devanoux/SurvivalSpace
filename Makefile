@@ -7,6 +7,9 @@ FILES =	main.c \
 		player.c \
 		asteroid.c \
 		map.c \
+		time.c \
+		display.c \
+		screen.c \
 		init.c 
 
 OBJS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.o))

@@ -9,9 +9,6 @@
 
 # include "contants.h"
 
-extern int	GAME_WIDTH;
-extern int	GAME_HEIGHT;
-
 typedef struct	s_asteroid
 {
 	bool	alive;
@@ -33,57 +30,61 @@ typedef struct	s_player
 	int			x;
 	int			y;
 	int			life;
+	int			cooldown;
 	t_missile	*missiles;
 }	t_player;
 
-typedef	int** t_map;
+typedef struct	s_user
+{
+	int		score;
+	char	*username;
+}	t_user;
+
+typedef	char**	t_map;
 
 typedef struct	s_game
 {
 	int			state;
+	int			width;
+	int			height;
 	t_map		map;
 	t_asteroid	*asteroid_list;
 	t_player	*player;
+	t_user		*user;
 }	t_game;
 
 //game.c
 void	update_game(t_game *game);
 
 //init.c
-t_game	*init_game(void);
+t_game	*init_game(int ac, char **av);
 void	init_scr(void);
 
 //player.c
 void	check_collision(t_game *game);
-void	move_missile(t_game *game);
-int	player_mouvement(t_game *game, int input);
+void	move_missile(t_missile *missiles);
+int		update_player(t_player *player, int input);
 void	check_life(t_game *game);
 
 //asteroid.c
-void	spawn_asteroid(t_map map, t_asteroid *asteroid_list);
 void	update_asteroids(t_asteroid *asteroid_list);
 
 //utils.c
-void	*ft_memset(void *s, int c, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
+void	for_each(void *array, size_t n, size_t (*f)(void *));
+int		min(int a, int b);
+int		max(int a, int b);
 
 //map.c
 void	update_map(t_game *game);
-void	display_map(t_map map);
 
+//time.c
+void	wait_for_frame(void);
 
+//display.c
+void	display_game(t_game *game);
 
-
-
-
-
-
-
-
-
-
-
-
+//screen.c
+void	handle_resize(t_game *game);
 
 
 

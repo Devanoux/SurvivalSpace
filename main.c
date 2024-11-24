@@ -6,57 +6,56 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:15:49 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 01:54:13 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 08:49:49 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <unistd.h>unistd
+#include <unistd.h>
 #include "header.h"
-
-int	GAME_WIDTH;
-int	GAME_HEIGHT;
 
 int	run_game(t_game *game)
 {
 	int input;
 	int exit;
+
 	while (game->state > 0)
 	{
+		handle_resize(game);
 		input = getch();
 		if (game->state == PLAY)
 		{
-			exit = player_mouvement(game, input);
+			exit = update_player(game->player, input);
 			if (exit == -1)
 				game->state = 0;
 			update_game(game);
-			display_map(game->map);
-			usleep(10000);
+			display_game(game);
 		}
 		if (game->state == GAME_OVER)
 		{
 			game->state = 0;
 		}
+		wait_for_frame();
 	}
 	return (0);
 }
 
-int	start_game(void)
+int	start_game(int ac, char **av)
 {
 	t_game	*game;
 
-	GAME_WIDTH = COLS;
-	GAME_HEIGHT = LINES;
-	game = init_game();
+	game = init_game(ac, av);
 	if (!game)
 		return (-1);
+	game->width = COLS;
+	game->height = LINES;
 	return (run_game(game));
 }
 
-int	main(void)
+int	main(int ac, char **av)
 {
 	initscr();
 	init_scr();
-	start_game();
+	start_game(ac, av);
 	endwin();
 	return 0;
 }
