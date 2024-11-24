@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 12:18:26 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 12:44:53 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_user	*init_user(int ac, char **av)
 	if (ac > 1)
 		new_user->username = av[1];
 	else
-		new_user->username = "Player 1";
+		new_user->username = "Player";
 	return (new_user);
 }
 

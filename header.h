@@ -8,7 +8,7 @@
 # include <limits.h>
 # include <time.h>
 
-# include "contants.h"
+# include "constants.h"
 
 typedef struct	s_asteroid
 {
