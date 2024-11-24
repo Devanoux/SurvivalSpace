@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 23:14:25 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:22:57 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int	move_player(t_player *player, int input)
 		player->x -= player->x > 0;
 		break ;
 	case 'd':
-		player->x += player->x < MAP_HEIGHT - 1;
+		player->x += player->x < MAP_WIDTH - 1;
 		break ;
 	case ' ':
 		piou_piou_player(player);

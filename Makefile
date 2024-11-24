@@ -12,13 +12,13 @@ FILES =	main.c \
 		screen.c \
 		free.c \
 		init.c \
-		enemy.c \
+		enemy.c
 
 OBJS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.o))
 DEPS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.d))
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -MD -MP -g
+CFLAGS = -Wall -Wextra -Werror -MD -MP
 
 MAKEFLAGS += --no-print-directory
 
@@ -27,7 +27,7 @@ MAKEFLAGS += --no-print-directory
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	cc -lncursesw $(OBJS) -o $(NAME) 
+	cc -lncursesw $(CFLAGS) $(OBJS) -o $(NAME) 
 
 $(BUILD_FOLDER)/%.o: %.c
 	@mkdir -p $(BUILD_FOLDER)
