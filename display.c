@@ -6,13 +6,52 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 20:49:26 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:13:58 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <time.h>
 #include "header.h"
+
+void	add_n_str_colored(char *s, int n, WINDOW *win, int y, int x)
+{
+	int	i;
+
+	init_color(8, 750, 750, 750);	// LIGHT GREY
+	init_color(9, 1000, 500, 0);	// ORANGE
+	init_pair(1, 8, COLOR_BLACK);
+	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(3, COLOR_RED, COLOR_BLACK);
+	init_pair(4, 9, COLOR_BLACK);
+	i = 0;
+	while (i < n)
+	{
+		switch (s[i])
+		{
+			case ASTEROID:
+				wattron(win, COLOR_PAIR(1));
+				break;
+			case PLAYER:
+				wattron(win, COLOR_PAIR(2));
+				break;
+			case ENEMY:
+				wattron(win, COLOR_PAIR(3));
+				break;
+			case ENEMY_MISSILE:
+				wattron(win, COLOR_PAIR(4));
+				break;
+			default:
+				break;
+		}
+		mvwaddch(win, y, x + i, s[i]);
+		wattroff(win, COLOR_PAIR(1));
+		wattroff(win, COLOR_PAIR(2));
+		wattroff(win, COLOR_PAIR(3));
+		wattroff(win, COLOR_PAIR(4));
+		i++;
+	}
+}
 
 WINDOW	*display_map(t_game *game)
 {
@@ -27,17 +66,20 @@ WINDOW	*display_map(t_game *game)
 	i = 0;
 	while (i < MAP_HEIGHT)
 	{
-		mvwaddnstr(win, i + 1, 1, game->map[i], MAP_WIDTH);
+		add_n_str_colored(game->map[i], MAP_WIDTH, win, i + 1, 1);
 		i++;
 	}
 	return (win);
 }
+
 
 WINDOW	*display_statistics(t_game *game)
 {
 	WINDOW *win;
 	
 	win = newwin(STAT_HEIGHT + 2, STAT_WIDTH + 2, (game->height / 2) - (STAT_HEIGHT / 2), (game->width / 2) - (MAP_WIDTH / 2) - STAT_MARGIN - (STAT_WIDTH + 2));
+	if (!win)
+		return (NULL);
 	box(win, 0, 0);
 	mvwaddnstr(win, 1, max(((STAT_WIDTH + 2) / 2) - (strlen(game->user->username) / 2), 1), game->user->username, min(strlen(game->user->username), STAT_WIDTH)); // (STAT_WIDTH / 2) - 3 is to center the string "PLAYER"
 	mvwprintw(win, 2, STAT_PADDING + 1, "Score : %d", game->user->score);
@@ -50,10 +92,10 @@ WINDOW	*display_health(t_game *game)
 	WINDOW *win;
 	int	i;
 
-	init_pair(1, COLOR_RED, COLOR_BLACK);
 	win = newwin(HEART_HEIGHT * game->player->life, HEALTH_WIDTH, (game->height / 2) - ((HEART_HEIGHT * game->player->life) / 2), 1 + (game->width / 2) + ((MAP_WIDTH + 2) / 2) + HEALTH_MARGIN);
+	if (!win)
+		return (NULL);
 	i = 0;
-	wattron(win, COLOR_PAIR(1));
 	while (i < game->player->life)
 	{
 		mvwprintw(win, i * HEART_HEIGHT, 0,      ",d88b.d88b,");
@@ -63,7 +105,6 @@ WINDOW	*display_health(t_game *game)
 		mvwprintw(win, i * HEART_HEIGHT + 4, 0,  "    `Y'    ");
 		i++;
 	}
-	wattroff(win, COLOR_PAIR(1));
 	return (win);
 }
 

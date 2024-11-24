@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 20:49:23 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:03:23 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@
 # define MAP_HEIGHT 40
 
 # define VOID ' '
-# define ASTEROID '#'
-# define PLAYER 'A'
-# define ENEMY 'T'
-# define ENEMY2 '4'
-# define PLAYER_MISSILE '\''
-# define ENEMY_MISSILE '*'
+# define ASTEROID '#'			// LIGHT GRAY
+# define PLAYER 'A' 			// YELLOW
+# define ENEMY 'T'				// RED
+# define PLAYER_MISSILE '\''	// WHITE
+# define ENEMY_MISSILE '*'		// ORANGE
 
 // GAME STATES
 
