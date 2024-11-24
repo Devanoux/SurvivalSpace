@@ -3,6 +3,7 @@
 		"stdlib.h": "c",
 		"limits.h": "c",
 		"unistd.h": "c",
-		"header.h": "c"
+		"header.h": "c",
+		"constants.h": "c"
 	}
 }

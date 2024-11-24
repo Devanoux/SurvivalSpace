@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 15:52:57 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 20:09:09 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,15 @@
 // MAX VALUES
 
 # define MAX_PLAYER_MISSILE 100
+# define MAX_ENEMY_MISSILE 500
 # define MAX_ASTEROIDS 42
 # define MAX_ENEMY 69
 
 // SPEED VALUES
 
 # define ASTEROID_SPEED 20
-# define MISSILE_SPEED 5
-# define ENEMY_SPEED 20
+# define MISSILE_SPEED 15
+# define ENEMY_SPEED 40
 
 // MAP VALUES
 
@@ -34,6 +35,7 @@
 # define ASTEROID '#'
 # define PLAYER 'A'
 # define ENEMY 'T'
+# define ENEMY2 '4'
 # define PLAYER_MISSILE '\''
 # define ENEMY_MISSILE '*'
 
@@ -60,8 +62,9 @@
 # define HEART_HEIGHT 7
 
 // DIFFICULTY CONFIG
-# define PLAYER_COOLDOWN 20
-# define FPS 60;
+# define PLAYER_COOLDOWN 5
+# define ENEMY_COOLDOWN 100
+# define FPS 60
 # define ASTEROID_SPAWN_RATE 1 // divided by 1000
 # define ENEMY_SPAWN_RATE 1 // same
 

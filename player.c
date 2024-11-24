@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 15:59:12 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 20:26:11 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,17 @@ void	check_collision(t_game *game)
 		i++;
 	}
 	i = 0;
+	while (i < MAX_ENEMY_MISSILE)
+	{
+		if (game->missiles[i].alive && game->player->x == game->missiles[i].x && game->player->y == game->missiles[i].y)
+		{
+			game->player->life--;
+			game->missiles[i].alive = FALSE;
+		}		
+		i++;
+	}
+	
+	i = 0;
 	while (i < MAX_ASTEROIDS)
 	{
 		if (game->asteroid_list[i].x == game->player->x && game->asteroid_list[i].y == game->player->y && game->asteroid_list[i].alive)
@@ -58,12 +69,12 @@ void	check_life(t_game *game)
 		game->state = GAME_OVER;
 }
 
-void	piou_piou(t_player *player)
+void	piou_piou_player(t_player *player)
 {
 	int	i;
 
 	i = 0;
-	if (!player->cooldown)
+	if (!player->cooldown && player->y > 0)
 	{
 		while (i < MAX_PLAYER_MISSILE)
 		{
@@ -72,6 +83,7 @@ void	piou_piou(t_player *player)
 				player->missiles[i].alive = TRUE;
 				player->missiles[i].x = player->x;
 				player->missiles[i].y = player->y - 1;
+				player->missiles[i].cooldown = MISSILE_SPEED;
 				break ;
 			}
 				i++;
@@ -80,7 +92,7 @@ void	piou_piou(t_player *player)
 	}
 }
 
-void	move_missile(t_missile *missiles)
+void	move_missile_player(t_missile *missiles)
 {
 	int i;
 
@@ -132,7 +144,7 @@ int	move_player(t_player *player, int input)
 		player->x += player->x < MAP_HEIGHT - 1;
 		break ;
 	case ' ':
-		piou_piou(player);
+		piou_piou_player(player);
 		break ;
 	case KEY_BACKSPACE:
 		return (-1);
