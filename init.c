@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 14:17:42 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 14:23:35 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void	init_scr()
 	noecho();
 	cbreak();
 	curs_set(0);
-	// start_color();
+	//start_color();
 	srand(time(NULL));
 	keypad(stdscr, TRUE);
 	setlocale(LC_ALL, "");

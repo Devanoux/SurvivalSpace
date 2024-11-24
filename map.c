@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 14:18:16 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 14:58:56 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,11 @@ void	update_map(t_game *game)
 	while (i < MAX_ASTEROIDS)
 	{
 		if (game->asteroid_list[i].alive)
-		{
 			game->map[game->asteroid_list[i].y][game->asteroid_list[i].x] = ASTEROID;
-		}
 		i++;
 	}
 	i = 0;
-	while (i < MAX_ENEMY)
+    while (i < MAX_ENEMY)
 	{
 		if (game->enemy_list[i].alive)
 		{
