@@ -6,22 +6,12 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 22:55:26 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:15:00 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <time.h>
 #include "header.h"
-
-
-void usleep(long seconds, long nanoseconds) {
-    struct timespec req = {0};
-    req.tv_sec = seconds;
-    req.tv_nsec = nanoseconds;
-
-    nanosleep(&req, NULL);
-}
 
 void	display_game_over(t_game *game, int frames)
 {
@@ -131,7 +121,7 @@ WINDOW	*display_statistics(t_game *game)
 	if (!win)
 		return (NULL);
 	box(win, 0, 0);
-	mvwaddnstr(win, 1, max(((STAT_WIDTH + 2) / 2) - (strlen(game->user->username) / 2), 1), game->user->username, min(strlen(game->user->username), STAT_WIDTH)); // (STAT_WIDTH / 2) - 3 is to center the string "PLAYER"
+	mvwaddnstr(win, 1, max(((STAT_WIDTH + 2) / 2) - (strlen(game->user->username) / 2), 1), game->user->username, min(strlen(game->user->username), STAT_WIDTH));
 	mvwprintw(win, 2, STAT_PADDING + 1, "Score : %d", game->user->score);
 	mvwprintw(win, 3, STAT_PADDING + 1, "Timer : %ld", time(NULL) - game->user->start_time);
 	return (win);

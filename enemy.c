@@ -6,14 +6,14 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 12:31:39 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 23:08:20 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:17:23 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "header.h"
 
-void	summon_ennemy(t_enemy *enemy, t_enemy *enemy_list,
-		t_asteroid *asteroid_list)
+void	summon_ennemy(t_enemy *enemy, t_enemy *enemy_list, t_asteroid *asteroid_list)
 {
 	int	i;
 	int	pos_x;

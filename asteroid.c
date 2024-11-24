@@ -6,10 +6,11 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:10:46 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 23:07:24 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:17:01 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "header.h"
 
 void	summon_asteroid(t_asteroid *asteroid)
@@ -41,7 +42,6 @@ void	move_asteroid(t_asteroid *asteroid)
 void	update_asteroids(t_asteroid *asteroid_list)
 {
 	size_t	i;
-	// int		dead_asteroids;
 
 	i = 0;
 	while (i < MAX_ASTEROIDS)

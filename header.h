@@ -2,8 +2,6 @@
 # define HEADER_H
 
 # include <ncurses.h>
-# include <stdlib.h>
-# include <limits.h>
 # include <time.h>
 
 # include "constants.h"
@@ -15,12 +13,6 @@ typedef struct	s_asteroid
 	int 	x;
 	int 	y;
 }	t_asteroid;
-
-
-//typedef struct s_pattern
-//{
-	
-//}
 
 typedef struct	s_missile
 {

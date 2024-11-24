@@ -6,23 +6,11 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:11:37 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 03:24:27 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:16:26 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-void	for_each(void *array, size_t n, size_t (*f)(void *))
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		array += f(array);
-		i++;
-	}
-}
 
 int	min(int a, int b)
 {

@@ -6,11 +6,10 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 02:00:12 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 18:09:26 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:16:17 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <time.h>
 
 void    wait_for_frame(const struct timespec *start, int frame_duration_ms) {

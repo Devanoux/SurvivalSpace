@@ -6,10 +6,11 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:05:48 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 21:09:47 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:17:15 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "header.h"
 
 void	*free_game(t_game *game)
