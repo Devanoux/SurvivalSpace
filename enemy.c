@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   enemy.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 12:31:39 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 20:27:34 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 23:04:53 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	summon_ennemy(t_enemy *enemy,  t_enemy *enemy_list, t_asteroid *asteroid_list)
+void	summon_ennemy(t_enemy *enemy, t_enemy *enemy_list,
+		t_asteroid *asteroid_list)
 {
 	int	i;
-	int pos_x;
+	int	pos_x;
 	int	pos_y;
 
 	i = 0;
@@ -37,9 +38,9 @@ void	summon_ennemy(t_enemy *enemy,  t_enemy *enemy_list, t_asteroid *asteroid_li
 		{
 			if (asteroid_list[i].alive)
 			{
-				if(asteroid_list[i].x == pos_x && asteroid_list[i].y == pos_y)
+				if (asteroid_list[i].x == pos_x && asteroid_list[i].y == pos_y)
 				{
-					pos_x = rand()% MAP_WIDTH;
+					pos_x = rand() % MAP_WIDTH;
 					i = -1;
 				}
 			}
@@ -53,27 +54,30 @@ void	summon_ennemy(t_enemy *enemy,  t_enemy *enemy_list, t_asteroid *asteroid_li
 
 void	move_missile_enemy(t_missile *missiles)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < MAX_ENEMY_MISSILE)
+	while (i < MAX_ENEMY_MISSILE)
 	{
-		if (!missiles[i].cooldown && missiles[i].alive)
+		if (missiles[i].alive)
 		{
-			if (missiles[i].y < MAP_HEIGHT - 1)
+			if (!missiles[i].cooldown)
 			{
-				missiles[i].y++;
-				missiles[i].cooldown = MISSILE_SPEED;
+				if (missiles[i].y < MAP_HEIGHT - 1)
+				{
+					missiles[i].y++;
+					missiles[i].cooldown = MISSILE_SPEED;
+				}
+				else
+					missiles[i].alive = FALSE;
 			}
 			else
-				missiles[i].alive = FALSE;
+				missiles[i].cooldown--;
 		}
-		else
-			missiles[i].cooldown--;
 		i++;
 	}
 }
-	
+
 void	move_enemy(t_enemy *enemy)
 {
 	if (!enemy->cooldown)
@@ -94,7 +98,7 @@ void	piou_piou_enemy(t_enemy *enemy, t_missile *missiles)
 {
 	int	i;
 
-	if (!enemy->missile_cooldown && enemy->y < MAP_HEIGHT - 2)
+	if (enemy->missile_cooldown <= 0 && enemy->y < MAP_HEIGHT - 2)
 	{
 		i = 0;
 		while (i < MAX_ENEMY_MISSILE)
@@ -128,7 +132,8 @@ void	update_enemy(t_game *game)
 			piou_piou_enemy(&game->enemy_list[i], game->missiles);
 		}
 		else
-			summon_ennemy(&game->enemy_list[i], game->enemy_list, game->asteroid_list);
- 		i++;
+			summon_ennemy(&game->enemy_list[i], game->enemy_list,
+				game->asteroid_list);
+		i++;
 	}
 }

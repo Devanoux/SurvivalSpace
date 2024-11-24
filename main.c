@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:15:49 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 22:39:53 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:48:24 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	run_game(t_game *game)
 		if (game->state == GAME_OVER)
 		{
 			if (input == ' ')
-				game->state = PLAY;
+				game->state = END;
 			display_game_over(game, frames);
 		}
 		wait_for_frame(&start, 1000 / FPS);

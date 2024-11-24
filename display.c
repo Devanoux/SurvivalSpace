@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 22:39:35 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:55:26 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void usleep(long seconds, long nanoseconds) {
 
 void	display_game_over(t_game *game, int frames)
 {
+	init_pair(1, COLOR_RED, COLOR_BLACK);
+	clear();
+	attron(COLOR_PAIR(1));
 	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2), (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "      NO!                          MNO!   ");
 	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 1, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "     MNO!!                        MNNOO!  ");
 	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 2, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "   MMNO!                           MNNOO!!");
@@ -46,17 +49,19 @@ void	display_game_over(t_game *game, int frames)
 	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 18, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "    MNNNNNO!    OOOOOOOOOOO    MMNNON!    ");
 	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 19, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "      MNNNNO!    PPPPPPPPP    MMNON!      ");
 	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 20, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "         OO!                   ON!        ");
-
+	mvprintw(game->height / 2 + 15, game->width / 2 - 10, "Score : %d", game->user->score);
+	mvprintw(game->height / 2 + 16, game->width / 2 - 10, "Time Survived : %ld", game->user->end_time - game->user->start_time);
 	if (frames % 100 >= 50)
 	{
-		mvprintw(game->height / 2 + 15, game->width / 2 - 13, "                       ");
+		mvprintw(game->height / 2 + 18, game->width / 2 - 11, "                   ");
 		refresh();
 	}
 	else
 	{
-		mvprintw(game->height / 2 + 15, game->width / 2 - 13 , "Press Space to continue");
+		mvprintw(game->height / 2 + 18, game->width / 2 - 11 , "Press Space to exit");
 		refresh();
 	}
+	attroff(COLOR_PAIR(1));
 }
 
 void	add_n_str_colored(char *s, int n, WINDOW *win, int y, int x)

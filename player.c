@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 20:26:11 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:56:56 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+#include <time.h>
 
 void	check_collision(t_game *game)
 {
@@ -65,8 +66,11 @@ void	check_collision(t_game *game)
 
 void	check_life(t_game *game)
 {
-	if (game->player->life == 0)
+	if (game->player->life <= 0)
+	{
 		game->state = GAME_OVER;
+		game->user->end_time = time(NULL);
+	}
 }
 
 void	piou_piou_player(t_player *player)

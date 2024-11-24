@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 21:24:31 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:56:06 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ t_user	*init_user(int ac, char **av)
 		return(NULL);
 	new_user->score = 0;
 	new_user->start_time = time(NULL);
+	new_user->end_time = 0;
 	if (ac > 1)
 		new_user->username = av[1];
 	else
