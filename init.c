@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 12:18:26 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 13:31:56 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,25 @@ t_map	init_map(void)
 	return (new_map);
 }
 
+t_enemy	*init_enemys(void)
+{
+	t_enemy	*new_enemy_list;
+	int	i;
+
+	new_enemy_list = malloc(MAX_ENEMY * sizeof(t_enemy));
+	if (!new_enemy_list)
+		return (NULL);
+	i = 0;
+	while (i < MAX_ENEMY)
+	{
+		new_enemy_list[i].alive = FALSE;
+		new_enemy_list[i].x = 0;
+		new_enemy_list[i].y = 0;
+		i++;
+	}
+	return (new_enemy_list);
+}
+
 t_asteroid	*init_asteroids(void)
 {
 	t_asteroid	*new_asteroid_list;
@@ -125,8 +144,15 @@ t_game	*init_game(int ac, char **av)
 	new_game->asteroid_list = init_asteroids();
 	if (!new_game->asteroid_list)
 		return (NULL);
+	new_game->enemy_list = init_enemys();
+	if (!new_game->enemy_list)
+		return (NULL);
 	new_game->user = init_user(ac, av);
+	if (!new_game->user)
+		return (NULL);
 	new_game->map = init_map();
+	if (!new_game->map)
+		return(NULL);
 	new_game->state = PLAY;
 	return (new_game);
 }

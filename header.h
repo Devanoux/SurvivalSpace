@@ -1,8 +1,6 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-//CONTINUE THE GAME OVER SCREEN MUST RETURN A ERROR AND ALSO BREAK THE WHILE (1)
-
 # include <ncurses.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -17,6 +15,20 @@ typedef struct	s_asteroid
 	int 	x;
 	int 	y;
 }	t_asteroid;
+
+typedef struct	s_enemy
+{
+	bool	alive;
+	int		cooldown;
+	int		x;
+	int		y;
+	//void*	patern;
+}	t_enemy;
+
+//typedef struct s_pattern
+//{
+	
+//}
 
 typedef struct	s_missile
 {
@@ -53,6 +65,7 @@ typedef struct	s_game
 	t_asteroid	*asteroid_list;
 	t_player	*player;
 	t_user		*user;
+	t_enemy		*enemy_list;
 }	t_game;
 
 //game.c
@@ -67,6 +80,9 @@ void	check_collision(t_game *game);
 void	move_missile(t_missile *missiles);
 int		update_player(t_player *player, int input);
 void	check_life(t_game *game);
+
+//enemy.c
+void	update_enemy(t_game *game);
 
 //asteroid.c
 void	update_asteroids(t_asteroid *asteroid_list);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   contants.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 09:12:08 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 13:07:46 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 // MAX VALUES
 
 # define MAX_ASTEROIDS 42
+# define MAX_ENEMY 69
 
 // SPEED VALUES
 
 #define	ASTEROID_SPEED 20
 #define	MISSILE_SPEED 10
+#define ENEMY_SPEED 20
 
 // MAP VALUES
 
@@ -60,5 +62,6 @@
 # define PLAYER_COOLDOWN 15
 # define FPS 60;
 # define ASTEROID_SPAWN_RATE 1 // / 1000
+# define ENEMY_SPAWN_RATE 1
 
 #endif
