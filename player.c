@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 00:03:38 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 01:44:49 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 
 // MUST CHECK Collision to asteroid or ennemy / bullet set all in the defintiion
 // function but if we want just verify only one set other to NULL
-void	check_collision(t_asteroid *asteroid_list, t_player *player)
+void	check_collision(t_game *game)
 {
 	int	i;
 
 	i = 0;
 	while (i < MAX_ASTEROIDS)
 	{
-		if (asteroid_list[i].x == player->x && asteroid_list[i].y == player->y)
+		if (game->asteroid_list[i].x == game->player->x && game->asteroid_list[i].y == game->player->y && game->asteroid_list[i].alive)
 		{
-			asteroid_list[i].alive = FALSE;
-			player->life--;
+			game->asteroid_list[i].alive = FALSE;
+			game->player->life--;
 		}
 		i++;
+	}
+}
+
+void	check_life(t_game *game)
+{
+	if (game->player->life == 0)
+	{
+		game->state = GAME_OVER;
 	}
 }
 
@@ -45,6 +53,29 @@ void	piou_piou(t_game *game)
 			break;
 		}
 			i++;
+	}
+}
+
+void	move_missile(t_game *game)
+{
+	int i;
+
+	i = 0;
+	while(i < 500)
+	{
+		if (!game->player->missiles[i].cooldown)
+		{
+			if (game->player->missiles[i].y > 0)
+			{
+				game->player->missiles[i].y--;
+				game->player->missiles[i].cooldown = ASTEROID_SPEED;
+			}
+			else
+				game->player->missiles[i].alive = FALSE;
+		}
+		else
+			game->player->missiles[i].cooldown--;
+		i++;
 	}
 }
 
@@ -68,7 +99,7 @@ int	player_mouvement(t_game *game, int input)
 		game->player->x -= game->player->x > 0;
 	else if (input == 'd')
 		game->player->x += game->player->x < GAME_WIDTH - 1;
-	else if (input == 'o')
+	else if (input == 32)
 		piou_piou(game);
 	else if (input == KEY_BACKSPACE)
 		return (-1);

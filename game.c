@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:52:51 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/23 22:12:57 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 01:31:43 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ void	update_game(t_game *game)
 	i = 0;
 	// ASTEROID PART
 	update_asteroids(asteroid_list);
+	move_missile(game);
 	i = 0;
 	
 	// PLAYER PART
-	check_collision(asteroid_list, game->player);
+	check_collision(game);
+	check_life(game);
 	update_map(game);
 }
