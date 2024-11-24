@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 13:31:56 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 14:17:42 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ t_missile	*init_missiles(void)
 {
 	t_missile *new_missiles_list;
 	int	i;
-	//!:! CHANGE THE MALLOC 500 UP TO THE MAX OF WIDTH * HEIGHT
-	new_missiles_list = malloc(500 * sizeof(t_missile));
+
+	new_missiles_list = malloc(MAX_PLAYER_MISSILE * sizeof(t_missile));
 	if (!new_missiles_list)
 		return (NULL);
 	i = 0;
-	while (i < 500)
+	while (i < MAX_PLAYER_MISSILE)
 	{
 		new_missiles_list[i].alive =  FALSE;
 		new_missiles_list[i].x = 0;
@@ -123,7 +123,7 @@ t_user	*init_user(int ac, char **av)
 	if (ac > 1)
 		new_user->username = av[1];
 	else
-		new_user->username = "Player 1";
+		new_user->username = "Player";
 	return (new_user);
 }
 

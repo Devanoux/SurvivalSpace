@@ -6,7 +6,7 @@
 # include <limits.h>
 # include <time.h>
 
-# include "contants.h"
+# include "constants.h"
 
 typedef struct	s_asteroid
 {
@@ -104,7 +104,8 @@ void	display_game(t_game *game);
 //screen.c
 void	handle_resize(t_game *game);
 
-
+//free.c
+void	free_game(t_game *game);
 
 
 //typedef struct	s_enemy 

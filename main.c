@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:15:49 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 08:49:49 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 13:14:44 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,16 @@ int	run_game(t_game *game)
 int	start_game(int ac, char **av)
 {
 	t_game	*game;
+	int		return_state;
 
 	game = init_game(ac, av);
 	if (!game)
 		return (-1);
 	game->width = COLS;
 	game->height = LINES;
-	return (run_game(game));
+	return_state = run_game(game);
+	free_game(game);
+	return (return_state);
 }
 
 int	main(int ac, char **av)

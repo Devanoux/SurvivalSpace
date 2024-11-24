@@ -10,6 +10,7 @@ FILES =	main.c \
 		time.c \
 		display.c \
 		screen.c \
+		free.c \
 		init.c \
 		enemy.c 
 

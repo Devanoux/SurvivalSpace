@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 12:20:33 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 12:56:51 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 
 // STATS CONFIGS
 
-# define STAT_WIDTH 20
-# define STAT_HEIGHT 4
+# define STAT_WIDTH 18
+# define STAT_HEIGHT 3
 # define STAT_MARGIN 3
 # define STAT_PADDING 1
 
@@ -58,7 +58,7 @@
 # define HEART_HEIGHT 7
 
 // DIFFICULTY CONFIG
-# define PLAYER_COOLDOWN 30
+# define PLAYER_COOLDOWN 20
 # define FPS 60;
 # define ASTEROID_SPAWN_RATE 1 // divided by 1000
 
