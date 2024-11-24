@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 16:07:46 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 20:01:48 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,14 @@ void	update_map(t_game *game)
     while (i < MAX_ENEMY)
 	{
 		if (game->enemy_list[i].alive)
-		{
 			game->map[game->enemy_list[i].y][game->enemy_list[i].x] = ENEMY;
-		}
+		i++;
+	}
+	i = 0;
+	while (i < MAX_ENEMY_MISSILE)
+	{
+		if (game->missiles[i].alive == TRUE)
+			game->map[game->missiles[i].y][game->missiles[i].x] = ENEMY_MISSILE;
 		i++;
 	}
 	game->map[game->player->y][game->player->x] = PLAYER;

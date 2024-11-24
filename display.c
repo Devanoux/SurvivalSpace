@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 18:26:45 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 20:49:26 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ WINDOW	*display_map(t_game *game)
 	int	i;
 
 	win = newwin(MAP_HEIGHT + 2, MAP_WIDTH + 2, (game->height / 2) - (MAP_HEIGHT / 2), (game->width / 2) - (MAP_WIDTH / 2));
+	if (!win)
+		return (NULL);
 	box(win, 0, 0);
 	wrefresh(win);
 	i = 0;

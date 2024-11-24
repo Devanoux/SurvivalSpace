@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 20:46:08 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 20:49:32 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <locale.h>
 #include "header.h"
 
-t_missile	*init_missiles(void)
+t_missile	*init_missiles_player(void)
 {
 	t_missile *new_missiles_list;
 	int	i;
@@ -34,6 +34,26 @@ t_missile	*init_missiles(void)
 	return (new_missiles_list);
 }
 
+t_missile	*init_missiles_enemy(void)
+{
+	t_missile *new_missiles_list;
+	int	i;
+
+	new_missiles_list = malloc(MAX_ENEMY_MISSILE * sizeof(t_missile));
+	if (!new_missiles_list)
+		return (NULL);
+	i = 0;
+	while (i < MAX_ENEMY_MISSILE)
+	{
+		new_missiles_list[i].alive =  FALSE;
+		new_missiles_list[i].x = 0;
+		new_missiles_list[i].y = 0;
+		new_missiles_list[i].cooldown = 0;
+		i++; 
+	}
+	return (new_missiles_list);
+}
+
 t_player	*init_player()
 {
 	t_player	*new_player;
@@ -45,7 +65,7 @@ t_player	*init_player()
 	new_player->x = MAP_WIDTH / 2;
 	new_player->y = MAP_HEIGHT - 3;
 	new_player->cooldown = 0;
-	new_player->missiles = init_missiles();
+	new_player->missiles = init_missiles_player();
 	return (new_player);
 }
 
@@ -73,7 +93,7 @@ t_map	init_map(void)
 	return (new_map);
 }
 
-t_enemy	*init_enemys(void)
+t_enemy	*init_enemies(void)
 {
 	t_enemy	*new_enemy_list;
 	int	i;
@@ -87,6 +107,8 @@ t_enemy	*init_enemys(void)
 		new_enemy_list[i].alive = FALSE;
 		new_enemy_list[i].x = 0;
 		new_enemy_list[i].y = 0;
+		new_enemy_list[i].cooldown = ENEMY_SPEED;
+		new_enemy_list[i].missile_cooldown = ENEMY_COOLDOWN;
 		i++;
 	}
 	return (new_enemy_list);
@@ -144,7 +166,7 @@ t_game	*init_game(int ac, char **av)
 	new_game->asteroid_list = init_asteroids();
 	if (!new_game->asteroid_list)
 		return (NULL);
-	new_game->enemy_list = init_enemys();
+	new_game->enemy_list = init_enemies();
 	if (!new_game->enemy_list)
 		return (NULL);
 	new_game->user = init_user(ac, av);
@@ -152,6 +174,9 @@ t_game	*init_game(int ac, char **av)
 		return (NULL);
 	new_game->map = init_map();
 	if (!new_game->map)
+		return(NULL);
+	new_game->missiles = init_missiles_enemy();
+	if (!new_game->missiles)
 		return(NULL);
 	new_game->state = PLAY;
 	return (new_game);

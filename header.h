@@ -16,14 +16,6 @@ typedef struct	s_asteroid
 	int 	y;
 }	t_asteroid;
 
-typedef struct	s_enemy
-{
-	bool	alive;
-	int		cooldown;
-	int		x;
-	int		y;
-	//void*	patern;
-}	t_enemy;
 
 //typedef struct s_pattern
 //{
@@ -37,6 +29,16 @@ typedef struct	s_missile
 	int		x;
 	int		y;
 }	t_missile;
+
+typedef struct	s_enemy
+{
+	bool		alive;
+	int			cooldown;
+	int			missile_cooldown;
+	int			x;
+	int			y;
+	//char*		patern;
+}	t_enemy;
 
 typedef struct	s_player
 {
@@ -63,6 +65,7 @@ typedef struct	s_game
 	int			height;
 	t_map		map;
 	t_asteroid	*asteroid_list;
+	t_missile	*missiles;
 	t_player	*player;
 	t_user		*user;
 	t_enemy		*enemy_list;
@@ -77,12 +80,13 @@ void	init_scr(void);
 
 //player.c
 void	check_collision(t_game *game);
-void	move_missile(t_missile *missiles);
+void	move_missile_player(t_missile *missiles);
 int		update_player(t_player *player, int input);
 void	check_life(t_game *game);
 
 //enemy.c
 void	update_enemy(t_game *game);
+void	move_missile_enemy(t_missile *missiles);
 
 //asteroid.c
 void	update_asteroids(t_asteroid *asteroid_list);
