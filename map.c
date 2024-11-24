@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 04:45:19 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 13:17:00 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	update_map(t_game *game)
 
 	clean_map(game->map);
 	i = 0;
-	while (i < 500)
+	while (i < MAX_PLAYER_MISSILE)
 	{
 		if (game->player->missiles[i].alive == TRUE)
 			game->map[game->player->missiles[i].y][game->player->missiles[i].x] = PLAYER_MISSILE;

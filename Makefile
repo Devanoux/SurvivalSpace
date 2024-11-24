@@ -10,6 +10,7 @@ FILES =	main.c \
 		time.c \
 		display.c \
 		screen.c \
+		free.c \
 		init.c 
 
 OBJS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.o))

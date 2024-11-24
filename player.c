@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 08:54:55 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 13:17:03 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	piou_piou(t_player *player)
 	i = 0;
 	if (!player->cooldown)
 	{
-		while (i < 500)
+		while (i < MAX_PLAYER_MISSILE)
 		{
 			if (player->missiles[i].alive == FALSE)
 			{
@@ -64,7 +64,7 @@ void	move_missile(t_missile *missiles)
 	int i;
 
 	i = 0;
-	while(i < 500)
+	while(i < MAX_PLAYER_MISSILE)
 	{
 		if (!missiles[i].cooldown)
 		{
