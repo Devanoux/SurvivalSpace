@@ -6,13 +6,58 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 19:38:34 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:28:45 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <time.h>
 #include "header.h"
+
+
+void usleep(long seconds, long nanoseconds) {
+    struct timespec req = {0};
+    req.tv_sec = seconds;
+    req.tv_nsec = nanoseconds;
+
+    nanosleep(&req, NULL);
+}
+
+void	display_game_over(t_game *game, int frames)
+{
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2), (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "      NO!                          MNO!   ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 1, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "     MNO!!                        MNNOO!  ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 2, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "   MMNO!                           MNNOO!!");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 3, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), " MNOONNOO!   MMMMMMMMMMPPPOII!   MNNO!!!! ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 4, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), " !O! NNO! MMMMMMMMMMMMMPPPOOOII!! NO!     ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 5, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "       ! MMMMMMMMMMMMMPPPPOOOOIII! !      ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 6, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "        MMMMMMMMMMMMPPPPPOOOOOOII!!       ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 7, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "        MMMMMOOOOOOPPPPPPPPOOOOMII!       ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 8, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "        MMMMM..    OPPMMP    .,OMI!       ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 9, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "        MMMM::   o.,OPMP,.o   ::I!!       ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 10, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "          NNM:::.,,OOPM!P,.::::!!         ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 11, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "         MMNNNNNOOOOPMO!!IIPPO!!O!        ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 12, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "         MMMMMNNNNOO:!!:!!IPPPPOO!        ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 13, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "          MMMMMNNOOMMNNIIIPPPOO!!         ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 14, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "             MMMONNMMNNNIIIOO!            ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 15, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "           MN MOMMMNNNIIIIIO! OO          ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 16, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "          MNO! IiiiiiiiiiiiI OOOO         ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 17, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "     NNN.MNO!   O!!!!!!!!!O   OONO NO!    ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 18, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "    MNNNNNO!    OOOOOOOOOOO    MMNNON!    ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 19, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "      MNNNNO!    PPPPPPPPP    MMNON!      ");
+	mvprintw((game->height / 2) - (GAME_OVER_IMAGE_HEIGHT / 2) + 20, (game->width / 2) - (GAME_OVER_IMAGE_WIDTH / 2), "         OO!                   ON!        ");
+
+	if (frames % 100 >= 50)
+	{
+		mvprintw(game->height / 2 + 15, game->width / 2 - 13, "                       ");
+		refresh();
+	}
+	else
+	{
+		mvprintw(game->height / 2 + 15, game->width / 2 - 13 , "Press Space to continue");
+		refresh();
+	}
+}
 
 WINDOW	*display_map(t_game *game)
 {

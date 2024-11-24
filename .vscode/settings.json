@@ -4,6 +4,7 @@
 		"limits.h": "c",
 		"unistd.h": "c",
 		"header.h": "c",
-		"constants.h": "c"
+		"constants.h": "c",
+		"string.h": "c"
 	}
 }

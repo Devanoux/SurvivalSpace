@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:15:49 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 13:14:44 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 22:36:41 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	run_game(t_game *game)
 {
 	int input;
 	int exit;
+	int frames;
 
+	frames = 0;
 	while (game->state > 0)
 	{
 		handle_resize(game);
@@ -32,9 +34,13 @@ int	run_game(t_game *game)
 		}
 		if (game->state == GAME_OVER)
 		{
-			game->state = 0;
+			if (input == ' ')
+				game->state = PLAY;
+			display_game_over(game, frames);
 		}
 		wait_for_frame();
+		frames++;
+		frames %= 100000;
 	}
 	return (0);
 }

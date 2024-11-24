@@ -104,6 +104,7 @@ void	wait_for_frame(void);
 
 //display.c
 void	display_game(t_game *game);
+void	display_game_over(t_game *game, int frames);
 
 //screen.c
 void	handle_resize(t_game *game);

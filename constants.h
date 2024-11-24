@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 20:09:09 by dernst           ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 21:33:55 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@
 # define HEALTH_MARGIN 3
 # define HEALTH_PADDING 1
 # define HEART_HEIGHT 7
+
+// GAMEOVER CONFIGS
+
+# define GAME_OVER_IMAGE_WIDTH 42
+# define GAME_OVER_IMAGE_HEIGHT 21
 
 // DIFFICULTY CONFIG
 # define PLAYER_COOLDOWN 5
