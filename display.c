@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 09:15:33 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 09:29:29 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	display_statistics(t_game *game)
 
 void	display_health(t_game *game)
 {
-	WINDOW *win = newwin(HEART_HEIGHT * game->player->life, HEALTH_WIDTH, (game->height / 2) - ((HEART_HEIGHT * game->player->life) / 2), (game->width / 2) + ((MAP_WIDTH + 2) / 2) + HEALTH_MARGIN);
+	WINDOW *win = newwin(HEART_HEIGHT * game->player->life, HEALTH_WIDTH, (game->height / 2) - ((HEART_HEIGHT * game->player->life) / 2), 1 + (game->width / 2) + ((MAP_WIDTH + 2) / 2) + HEALTH_MARGIN);
 	int	i;
 
 	i = 0;
