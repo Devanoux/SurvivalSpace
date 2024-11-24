@@ -54,8 +54,10 @@ t_game	*init_game(void);
 void	init_scr(void);
 
 //player.c
-void	check_collision(t_asteroid *asteroid_list, t_player *player);
+void	check_collision(t_game *game);
+void	move_missile(t_game *game);
 int	player_mouvement(t_game *game, int input);
+void	check_life(t_game *game);
 
 //asteroid.c
 void	spawn_asteroid(t_map map, t_asteroid *asteroid_list);

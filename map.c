@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 21:48:18 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 01:21:38 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 01:54:17 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	display_map(t_map map)
 {
+
+	init_pair(1, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
 	int	i;
 	int	j;
 
@@ -29,13 +32,25 @@ void	display_map(t_map map)
 			else if (map[j][i] == 1)
 				printw("#");
 			else if (map[j][i] == 2)
+			{
+				attron(COLOR_PAIR(1));
 				printw("A");
+				attroff(COLOR_PAIR(1)); 
+			}
 			else if (map[j][i] == 3)
+			{
+				attron(COLOR_PAIR(1));
 				printw("T");
+				attroff(COLOR_PAIR(1)); 
+			}
 			else if (map[j][i] == 4)
-				printw("'");
+			{
+				printw("'"); 
+			}
 			else if (map[j][i] == 5)
+			{
 				printw("*");
+			}
 			i++;
 		}
 		j++;
@@ -59,7 +74,7 @@ void	clean_map(t_map map)
 		}
 		i++;
 	}
-}
+} 
 
 void	update_map(t_game *game)
 {
@@ -67,19 +82,19 @@ void	update_map(t_game *game)
 
 	clean_map(game->map);
 	i = 0;
+	while (i < 500)
+	{
+		if (game->player->missiles[i].alive == TRUE)
+			game->map[game->player->missiles[i].y][game->player->missiles[i].x] = PLAYER_BULLET;
+		i++;
+	}
+	i = 0;
 	while (i < MAX_ASTEROIDS)
 	{
 		if (game->asteroid_list[i].alive)
 		{
 			game->map[game->asteroid_list[i].y][game->asteroid_list[i].x] = ASTEROID;
 		}
-		i++;
-	}
-	i = 0;
-	while (i < 500)
-	{
-		if (game->player->missiles[i].alive == TRUE)
-			game->map[game->player->missiles[i].y][game->player->missiles[i].x] = PLAYER_BULLET;
 		i++;
 	}
 	game->map[game->player->y][game->player->x] = PLAYER;
