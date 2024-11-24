@@ -3,21 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:28:21 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 13:17:03 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 15:59:12 by dernst           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-// MUST CHECK Collision to asteroid or ennemy / bullet set all in the defintiion
-// function but if we want just verify only one set other to NULL
 void	check_collision(t_game *game)
 {
 	int	i;
+	int	j;
 
+	i = 0;
+	j = 0;
+	while (i < MAX_ENEMY)
+	{
+		while(j < MAX_PLAYER_MISSILE)
+		{
+			if (game->enemy_list[i].alive && game->player->missiles[j].alive && game->player->missiles[j].x == game->enemy_list[i].x && game->player->missiles[j].y == game->enemy_list[i].y)
+			{
+				game->enemy_list[i].alive = FALSE;
+				game->player->missiles[j].alive = FALSE;
+				game->user->score += 100;
+			}
+			if (game->enemy_list[i].alive && game->enemy_list[i].x == game->player->x && game->enemy_list[i].y ==  game->player->y)
+			{
+				game->enemy_list[i].alive = FALSE;
+				game->player->life--;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 	i = 0;
 	while (i < MAX_ASTEROIDS)
 	{
@@ -25,7 +46,7 @@ void	check_collision(t_game *game)
 		{
 			game->asteroid_list[i].alive = FALSE;
 			game->player->life--;
-			game->user->score -= 1000;
+			game->user->score -= 500;
 		}
 		i++;
 	}

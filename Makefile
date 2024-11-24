@@ -12,6 +12,7 @@ FILES =	main.c \
 		screen.c \
 		free.c \
 		init.c \
+		enemy.c \
 
 OBJS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.o))
 DEPS = $(addprefix $(BUILD_FOLDER)/, $(FILES:.c=.d))
