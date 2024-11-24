@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 12:47:00 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 18:26:45 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ WINDOW	*display_health(t_game *game)
 	WINDOW *win;
 	int	i;
 
+	init_pair(1, COLOR_RED, COLOR_BLACK);
 	win = newwin(HEART_HEIGHT * game->player->life, HEALTH_WIDTH, (game->height / 2) - ((HEART_HEIGHT * game->player->life) / 2), 1 + (game->width / 2) + ((MAP_WIDTH + 2) / 2) + HEALTH_MARGIN);
 	i = 0;
+	wattron(win, COLOR_PAIR(1));
 	while (i < game->player->life)
 	{
 		mvwprintw(win, i * HEART_HEIGHT, 0,      ",d88b.d88b,");
@@ -59,6 +61,7 @@ WINDOW	*display_health(t_game *game)
 		mvwprintw(win, i * HEART_HEIGHT + 4, 0,  "    `Y'    ");
 		i++;
 	}
+	wattroff(win, COLOR_PAIR(1));
 	return (win);
 }
 

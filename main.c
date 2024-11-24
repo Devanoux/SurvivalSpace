@@ -6,20 +6,23 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 16:15:49 by dernst            #+#    #+#             */
-/*   Updated: 2024/11/24 13:14:44 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 18:16:16 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <time.h>
 #include "header.h"
 
 int	run_game(t_game *game)
 {
+	struct timespec start;
 	int input;
 	int exit;
 
 	while (game->state > 0)
 	{
+	    clock_gettime(CLOCK_MONOTONIC, &start);
 		handle_resize(game);
 		input = getch();
 		if (game->state == PLAY)
@@ -34,7 +37,7 @@ int	run_game(t_game *game)
 		{
 			game->state = 0;
 		}
-		wait_for_frame();
+		wait_for_frame(&start, 1000 / FPS);
 	}
 	return (0);
 }

@@ -1,8 +1,6 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-//CONTINUE THE GAME OVER SCREEN MUST RETURN A ERROR AND ALSO BREAK THE WHILE (1)
-
 # include <ncurses.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -80,7 +78,7 @@ int		max(int a, int b);
 void	update_map(t_game *game);
 
 //time.c
-void	wait_for_frame(void);
+void	wait_for_frame(const struct timespec *start, int frame_duration_ms);
 
 //display.c
 void	display_game(t_game *game);
@@ -90,45 +88,5 @@ void	handle_resize(t_game *game);
 
 //free.c
 void	free_game(t_game *game);
-
-
-//typedef struct	s_enemy 
-//{
-//	int		type;
-//	char	skin;
-//	int		health;
-//	char	*pattern;
-//	int		pattern_state;
-//}		t_enemy;
-
-//typedef struct	s_entity 
-//{
-//	int		type;
-//	int		x;
-//	int		y;
-//	void	*value;
-
-//}		t_entity;
-
-//typedef struct	s_map 
-//{
-//	int			width;
-//	int			height;
-//	t_entity	**content;
-//}		t_map;
-
-//typedef struct s_player
-//{
-//	int	health;
-//	int	x;
-//	int	y;
-//}		t_player;
-
-
-//typedef struct s_game
-//{
-//	t_map		*map;
-//	t_player	*player;
-//}		t_game;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 13:18:30 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 18:26:02 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	init_scr()
 	noecho();
 	cbreak();
 	curs_set(0);
-	// start_color();
+	start_color();
 	srand(time(NULL));
 	keypad(stdscr, TRUE);
 	setlocale(LC_ALL, "");
