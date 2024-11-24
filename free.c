@@ -6,13 +6,13 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:05:48 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 21:06:17 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 21:09:47 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	free_game(t_game *game)
+void	*free_game(t_game *game)
 {
 	int	i;
 
@@ -29,7 +29,8 @@ void	free_game(t_game *game)
 			free(game->asteroid_list);
 		if (game->player)
 		{
-			free(game->player->missiles);
+			if (game->player->missiles)
+				free(game->player->missiles);
 			free(game->player);
 		}
 		if (game->user)
@@ -40,4 +41,5 @@ void	free_game(t_game *game)
 			free(game->enemy_list);
 		free(game);
 	}
+	return (NULL);
 }

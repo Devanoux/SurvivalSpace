@@ -109,6 +109,6 @@ void	display_game(t_game *game);
 void	handle_resize(t_game *game);
 
 //free.c
-void	free_game(t_game *game);
+void	*free_game(t_game *game);
 
 #endif

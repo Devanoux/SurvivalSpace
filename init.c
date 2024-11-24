@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 21:00:29 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 21:24:31 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,11 @@ t_player	*init_player()
 	new_player->y = MAP_HEIGHT - 3;
 	new_player->cooldown = 0;
 	new_player->missiles = init_missiles_player();
+	if (!new_player->missiles)
+	{
+		free(new_player);
+		return (NULL);
+	}
 	return (new_player);
 }
 
@@ -164,22 +169,21 @@ t_game	*init_game(int ac, char **av)
 		free(new_game);
 		return (NULL);
 	}
-	// !:! FREE if error
 	new_game->asteroid_list = init_asteroids();
 	if (!new_game->asteroid_list)
-		return (NULL);
+		return (free_game(new_game));
 	new_game->enemy_list = init_enemies();
 	if (!new_game->enemy_list)
-		return (NULL);
+		return (free_game(new_game));
 	new_game->user = init_user(ac, av);
 	if (!new_game->user)
-		return (NULL);
+		return (free_game(new_game));
 	new_game->map = init_map();
 	if (!new_game->map)
-		return(NULL);
+		return (free_game(new_game));
 	new_game->missiles = init_missiles_enemy();
 	if (!new_game->missiles)
-		return(NULL);
+		return (free_game(new_game));
 	new_game->state = PLAY;
 	return (new_game);
 }
