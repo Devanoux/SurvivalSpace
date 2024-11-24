@@ -37,7 +37,6 @@ typedef struct	s_enemy
 	int			missile_cooldown;
 	int			x;
 	int			y;
-	//char*		patern;
 }	t_enemy;
 
 typedef struct	s_player
