@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 13:05:48 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 13:13:22 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 21:06:17 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ void	free_game(t_game *game)
 		}
 		if (game->user)
 			free(game->user);
+		if (game->missiles)
+			free(game->missiles);
+		if (game->enemy_list)
+			free(game->enemy_list);
 		free(game);
 	}
 }

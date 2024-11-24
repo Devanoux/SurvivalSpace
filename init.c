@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:43:36 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 20:49:32 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 21:00:29 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_missile	*init_missiles_player(void)
 		new_missiles_list[i].alive =  FALSE;
 		new_missiles_list[i].x = 0;
 		new_missiles_list[i].y = 0;
+		new_missiles_list[i].cooldown = MISSILE_SPEED;
 		i++; 
 	}
 	return (new_missiles_list);
@@ -127,7 +128,8 @@ t_asteroid	*init_asteroids(void)
 	{
 		new_asteroid_list[i].alive = FALSE;
 		new_asteroid_list[i].x = 0;
-		new_asteroid_list[i].x = 0;
+		new_asteroid_list[i].y = 0;
+		new_asteroid_list[i].cooldown = ASTEROID_SPEED;
 		i++;
 	}
 	return (new_asteroid_list);
