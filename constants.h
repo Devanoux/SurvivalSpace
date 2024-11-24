@@ -6,7 +6,7 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:58:26 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 11:16:39 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 12:20:33 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 # define HEART_HEIGHT 7
 
 // DIFFICULTY CONFIG
-# define PLAYER_COOLDOWN 20
+# define PLAYER_COOLDOWN 30
 # define FPS 60;
 # define ASTEROID_SPAWN_RATE 1 // divided by 1000
 

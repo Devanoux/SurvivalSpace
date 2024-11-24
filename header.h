@@ -6,6 +6,7 @@
 # include <ncurses.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <time.h>
 
 # include "contants.h"
 
@@ -38,6 +39,7 @@ typedef struct	s_user
 {
 	int		score;
 	char	*username;
+	time_t	start_time;
 }	t_user;
 
 typedef	char**	t_map;

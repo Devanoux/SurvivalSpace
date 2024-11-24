@@ -6,11 +6,12 @@
 /*   By: ebini <ebini@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:14:05 by ebini             #+#    #+#             */
-/*   Updated: 2024/11/24 09:29:29 by ebini            ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 12:19:45 by ebini            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <time.h>
 #include "header.h"
 
 void	display_map(t_game *game)
@@ -36,6 +37,7 @@ void	display_statistics(t_game *game)
 	box(win, 0, 0);
 	mvwaddnstr(win, 1, max(((STAT_WIDTH + 2) / 2) - (strlen(game->user->username) / 2), 1), game->user->username, min(strlen(game->user->username), STAT_WIDTH)); // (STAT_WIDTH / 2) - 3 is to center the string "PLAYER"
 	mvwprintw(win, 3, STAT_PADDING + 1, "Score : %d", game->user->score);
+	mvwprintw(win, 4, STAT_PADDING + 1, "Timer : %ld", time(NULL) - game->user->start_time);
 	wrefresh(win);
 }
 
