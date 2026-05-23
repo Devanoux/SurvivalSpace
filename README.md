@@ -3,6 +3,11 @@
 SurvivalSpace is a game inspired of 
 
 ## Features
+- **System of life** (3 Lifes)
+- **Control of the player**
+- **Death menu**
+- **Ennemy with movement and shoot**
+- **Stats of the game**
 
 ## Installation
 #### 1. Clone this repository in your machine
@@ -39,9 +44,11 @@ To launch the game, execute the binary
 
 ## Preview
 
+![hippo](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXg1cDNtbWU1bHY4bHk2M25vNTVoN2tncmRsbnJsZjAwb2p2YTl1MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iMLulRc2Crm3PCleeG/giphy.gif)
 
 ## Credits 
 
 -[Devan]()
+
 
 
