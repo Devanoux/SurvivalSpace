@@ -48,7 +48,8 @@ To launch the game, execute the binary
 
 ## Credits 
 
--[Devan]()
+- [Devanoux](https://github.com/Devanoux)
+- [saumon-brule](https://github.com/saumon-brule)
 
 
 
