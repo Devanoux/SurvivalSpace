@@ -8,7 +8,7 @@ SurvivalSpace is a game inspired of
 #### 1. Clone this repository in your machine
 
   ```bash
-  git clone
+  git clone git@github.com:Devanoux/42_FtShmup.git SurvivalSpace
   cd SurivalSpace
   ```
 #### 2. Install dependencies  
@@ -29,11 +29,19 @@ To clean up the project, remove binaries and object files:
 make fclean
 ```
 
+## Launch
+
+To launch the game, execute the binary  
+
+```bash
+./SurvivalSpace
+```
+
 ## Preview
 
--[Devan]()
 
 ## Credits 
 
+-[Devan]()
 
 
