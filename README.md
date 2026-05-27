@@ -1,4 +1,5 @@
 # SURVIVALSPACE
+![42](https://img.shields.io/badge/-42-black?style=for-the-badge&logo=42&logoColor=white) ![C](https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white)
 
 **A terminal-based space shooter — survive waves of enemies in the void of space.**
 
@@ -6,7 +7,7 @@
 
 ---
 
-## ⚡ FEATURES
+##  FEATURES
 
 | | Description |
 |---|---|
@@ -18,7 +19,7 @@
 
 ---
 
-## ⚙️ PREREQUISITES
+##  PREREQUISITES
 
 - C compiler: `cc`
 - Library: [`ncurses`](https://invisible-island.net/ncurses/)
@@ -29,7 +30,7 @@ sudo apt install libncurses5-dev libncursesw5-dev
 ```
 ---
 
-## 📦 INSTALLATION
+##  INSTALLATION
 
 **1. Clone the repository**
 ```bash
@@ -54,7 +55,7 @@ make fclean
 
 ---
 
-## 🎮 CONTROLS
+##  CONTROLS
 
 | Key | Action |
 |---|---|
@@ -65,7 +66,7 @@ make fclean
 
 ---
 
-## 👤 CREDITS
+##  CREDITS
 
 - [Devanoux](https://github.com/Devanoux)
 - [saumon-brule](https://github.com/saumon-brule)
