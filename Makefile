@@ -1,4 +1,4 @@
-NAME = ft_shmup
+NAME = SurvivalSpace
 BUILD_FOLDER = .build
 
 FILES =	main.c \
