@@ -27,12 +27,6 @@
 ```bash
 sudo apt install libncurses5-dev libncursesw5-dev
 ```
-
-**macOS (Homebrew)**
-```bash
-brew install ncurses
-```
-
 ---
 
 ## 📦 INSTALLATION
@@ -67,7 +61,7 @@ make fclean
 | `↑` `↓` `←` `→` | Move |
 | `z` `q` `s` `d` | Move |
 | `Space` | Shoot |
-| `Q` | Quit |
+| `Ctrl + c` | Quit |
 
 ---
 
