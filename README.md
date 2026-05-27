@@ -33,7 +33,7 @@ sudo apt install libncurses5-dev libncursesw5-dev
  
 **1. Clone the repository**
 ```bash
-git clone git@github.com:Devanoux/42_FtShmup.git SurvivalSpace
+git clone git@github.com:Devanoux/SurvivalSpace.git SurvivalSpace
 cd SurvivalSpace
 ```
  
